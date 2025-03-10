@@ -12,7 +12,7 @@ import {
 import { type NavItem } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
 import { ChevronUp } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './ui/collapsible';
 
 export function NavMain({ items = [] }: { items: NavItem[] }) {
@@ -37,10 +37,6 @@ export function NavMain({ items = [] }: { items: NavItem[] }) {
             }));
         }
     };
-
-    useEffect(() => {
-        console.log(collapsibleState);
-    }, [collapsibleState]);
 
     return (
         <SidebarGroup className="px-2 py-0">
