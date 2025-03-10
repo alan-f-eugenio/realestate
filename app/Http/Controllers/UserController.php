@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class UserController extends Controller {
     /**
      * Display a listing of the resource.
      */
     public function index() {
-        //
+        $users = User::paginate(20);
+
+        return Inertia::render('admin/users/user-index', [
+            'paginatedResponse' => $users,
+        ]);
     }
 
     /**
