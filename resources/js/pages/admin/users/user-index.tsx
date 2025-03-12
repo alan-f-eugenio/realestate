@@ -34,7 +34,7 @@ export default function Appearance({ paginatedResponse }: { paginatedResponse: P
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Users" />
+            <Head title="Users - List" />
 
             <div className="px-4 py-6">
                 <Heading title="Users" description="List all Users" />
@@ -58,11 +58,13 @@ export default function Appearance({ paginatedResponse }: { paginatedResponse: P
                                     <TableCell>{user.name}</TableCell>
                                     <TableCell>{user.email}</TableCell>
                                     <TableCell className="text-center whitespace-pre-wrap">{user.created_at.replace(' ', '\n')}</TableCell>
-                                    <TableCell className="text-center whitespace-pre-wrap">{user.updated_at.replace(' ', '\n')}</TableCell>
+                                    <TableCell className="text-center whitespace-pre-wrap">
+                                        {user.updated_at !== user.created_at ? user.updated_at.replace(' ', '\n') : 'Never'}
+                                    </TableCell>
                                     <TableCell className="text-center">
                                         <ButtonGroup size="sm" className="rounded-md border">
                                             <Button size="sm" variant="ghost" asChild>
-                                                <Link href={route('users.edit', user.id)}>Edit</Link>
+                                                <Link href={auth.user.id == user.id ? route('profile.edit') : route('users.edit', user.id)}>Edit</Link>
                                             </Button>
                                             <Separator orientation="vertical" />
                                             {can(auth.permissions, 'users.destroy') && (
