@@ -42,8 +42,8 @@ class User extends Authenticatable {
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'created_at' => 'datetime:m-d-Y H:i:s',
-            'updated_at' => 'datetime:m-d-Y H:i:s',
+            'created_at' => 'datetime:m/d/Y H:i:s',
+            'updated_at' => 'datetime:m/d/Y H:i:s',
         ];
     }
 }
