@@ -19,7 +19,7 @@ const mainNavItems: NavItem[] = [
         icon: Users,
         items: [
             {
-                title: 'Add',
+                title: 'Create',
                 url: '/users/create',
                 icon: Plus,
             },
