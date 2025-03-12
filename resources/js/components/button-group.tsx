@@ -5,10 +5,11 @@ import { cn } from '@/lib/utils';
 interface ButtonGroupProps {
     className?: string;
     orientation?: 'horizontal' | 'vertical';
+    size?: 'default' | 'sm' | 'lg';
     children: ReactNode;
 }
 
-export const ButtonGroup = ({ className, orientation = 'horizontal', children }: ButtonGroupProps) => {
+export const ButtonGroup = ({ className, orientation = 'horizontal', size = 'default', children }: ButtonGroupProps) => {
     const validChildren = Children.toArray(children).filter(isValidElement) as ReactElement<{ className?: string }>[];
     const totalButtons = validChildren.length;
     const isHorizontal = orientation === 'horizontal';
@@ -17,10 +18,13 @@ export const ButtonGroup = ({ className, orientation = 'horizontal', children }:
     return (
         <div
             className={cn(
-                'inline-flex h-8 divide-x',
+                'inline-flex divide-x',
                 {
                     'flex-col': isVertical,
                     'w-fit': isVertical,
+                    'h-9': size == 'default',
+                    'h-8': size == 'sm',
+                    'h-10': size == 'lg',
                 },
                 className,
             )}
