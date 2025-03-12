@@ -41,13 +41,13 @@ class HandleInertiaRequests extends Middleware {
                 'user' => $request->user(),
                 'permissions' => $request->user()?->getPermissionsViaRoles()->pluck('name'),
             ],
-            'ziggy' => fn(): array => [
+            'ziggy' => fn (): array => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],
             'flash' => [
-                'admin' => fn() => $request->session()->get('admin-flash'),
-                'public' => fn() => $request->session()->get('public-flash'),
+                'admin' => fn () => $request->session()->get('admin-flash'),
+                'public' => fn () => $request->session()->get('public-flash'),
             ],
         ];
     }
