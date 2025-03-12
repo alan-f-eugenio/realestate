@@ -5,6 +5,17 @@ import type { BreadcrumbItem, PaginatedResponse, SharedData, User } from '@/type
 import { ButtonGroup } from '@/components/button-group';
 import Heading from '@/components/heading';
 import { TableFooterPagination } from '@/components/table-footer-pagination';
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -49,15 +60,33 @@ export default function Appearance({ paginatedResponse }: { paginatedResponse: P
                                     <TableCell className="text-center whitespace-pre-wrap">{user.created_at.replace(' ', '\n')}</TableCell>
                                     <TableCell className="text-center whitespace-pre-wrap">{user.updated_at.replace(' ', '\n')}</TableCell>
                                     <TableCell className="text-center">
-                                        <ButtonGroup className="rounded-md border">
+                                        <ButtonGroup size="sm" className="rounded-md border">
                                             <Button size="sm" variant="ghost" asChild>
-                                                <Link href={`/users/${user.id}/edit`}>Edit</Link>
+                                                <Link href={route('users.edit', user.id)}>Edit</Link>
                                             </Button>
                                             <Separator orientation="vertical" />
                                             {can(auth.permissions, 'users.destroy') && (
-                                                <Button size="sm" variant="ghost" asChild>
-                                                    <Link href={`/users/${user.id}/delete`}>Delete</Link>
-                                                </Button>
+                                                <AlertDialog>
+                                                    <AlertDialogTrigger asChild>
+                                                        <Button size="sm" variant="ghost">
+                                                            Delete
+                                                        </Button>
+                                                    </AlertDialogTrigger>
+                                                    <AlertDialogContent>
+                                                        <AlertDialogHeader>
+                                                            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                                            <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
+                                                        </AlertDialogHeader>
+                                                        <AlertDialogFooter>
+                                                            <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                                            <AlertDialogAction asChild>
+                                                                <Link method="delete" href={route('users.destroy', user.id)} as="button">
+                                                                    Confirm
+                                                                </Link>
+                                                            </AlertDialogAction>
+                                                        </AlertDialogFooter>
+                                                    </AlertDialogContent>
+                                                </AlertDialog>
                                             )}
                                         </ButtonGroup>
                                     </TableCell>
