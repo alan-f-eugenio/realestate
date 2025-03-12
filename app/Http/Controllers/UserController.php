@@ -11,7 +11,9 @@ class UserController extends Controller {
      * Display a listing of the resource.
      */
     public function index() {
-        $users = User::paginate(20);
+        $users = User::query()
+            ->select('id', 'name', 'email', 'created_at', 'updated_at')
+            ->paginate(20);
 
         return Inertia::render('admin/users/user-index', [
             'paginatedResponse' => $users,
@@ -22,7 +24,9 @@ class UserController extends Controller {
      * Show the form for creating a new resource.
      */
     public function create() {
-        //
+        return Inertia::render('admin/users/user-create-edit', [
+            'item' => new User(),
+        ]);
     }
 
     /**
@@ -43,7 +47,9 @@ class UserController extends Controller {
      * Show the form for editing the specified resource.
      */
     public function edit(User $user) {
-        //
+        return Inertia::render('admin/users/user-create-edit', [
+            'item' => $user,
+        ]);
     }
 
     /**
