@@ -15,6 +15,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 export default function Appearance({ item }: { item: User }) {
     const { auth } = usePage<SharedData>().props;
+    console.log(auth);
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
@@ -23,9 +24,7 @@ export default function Appearance({ item }: { item: User }) {
             <div className="px-4 py-6">
                 <Heading title="Users" description={`${item.id ? 'Update' : 'Fill'} User Informations`} />
                 <Separator className="mb-8" />
-                <div className="grid grid-cols-2">
-
-                </div>
+                <div className="grid grid-cols-2"></div>
             </div>
         </AppLayout>
     );
