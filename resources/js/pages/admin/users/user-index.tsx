@@ -64,7 +64,9 @@ export default function Appearance({ paginatedResponse }: { paginatedResponse: P
                                     <TableCell className="text-center">
                                         <ButtonGroup size="sm" className="rounded-md border">
                                             <Button size="sm" variant="ghost" asChild>
-                                                <Link href={auth.user.id == user.id ? route('profile.edit') : route('users.edit', user.id)}>Edit</Link>
+                                                <Link href={auth.user.id == user.id ? route('profile.edit') : route('users.edit', user.id)}>
+                                                    Edit
+                                                </Link>
                                             </Button>
                                             <Separator orientation="vertical" />
                                             {can(auth.permissions, 'users.destroy') && (
