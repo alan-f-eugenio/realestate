@@ -1,12 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Inertia\Middleware;
 use Tighten\Ziggy\Ziggy;
 
-class HandleInertiaRequests extends Middleware {
+final class HandleInertiaRequests extends Middleware
+{
     /**
      * The root template that's loaded on the first page visit.
      *
@@ -32,9 +36,10 @@ class HandleInertiaRequests extends Middleware {
      *
      * @return array<string, mixed>
      */
-    public function share(Request $request): array {
-
-        return [
+    public function share(Request $request): array
+    {
+        /** @var array<string, mixed> $data */
+        $data = [
             ...parent::share($request),
             'name' => config('app.name'),
             'auth' => [
@@ -50,5 +55,7 @@ class HandleInertiaRequests extends Middleware {
                 'public' => fn () => $request->session()->get('public-flash'),
             ],
         ];
+
+        return $data;
     }
 }
