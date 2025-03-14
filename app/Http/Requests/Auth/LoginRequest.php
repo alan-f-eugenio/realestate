@@ -11,8 +11,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
-final class LoginRequest extends FormRequest
-{
+final class LoginRequest extends FormRequest {
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -76,8 +75,7 @@ final class LoginRequest extends FormRequest
     /**
      * Get the rate limiting throttle key for the request.
      */
-    public function throttleKey(): string
-    {
+    public function throttleKey(): string {
         return Str::transliterate(Str::lower((string) $this->string('email')).'|'.$this->ip());
     }
 }

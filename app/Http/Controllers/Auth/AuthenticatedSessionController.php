@@ -13,8 +13,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
 
-final class AuthenticatedSessionController extends Controller
-{
+final class AuthenticatedSessionController extends Controller {
     /**
      * Show the login page.
      */

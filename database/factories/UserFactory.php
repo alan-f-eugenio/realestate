@@ -12,8 +12,7 @@ use Illuminate\Support\Str;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
-final class UserFactory extends Factory
-{
+final class UserFactory extends Factory {
     /**
      * The current password being used by the factory.
      */
@@ -37,8 +36,7 @@ final class UserFactory extends Factory
     /**
      * Indicate that the model's email address should be unverified.
      */
-    public function unverified(): static
-    {
+    public function unverified(): static {
         return $this->state(fn (array $attributes): array => [
             'email_verified_at' => null,
         ]);

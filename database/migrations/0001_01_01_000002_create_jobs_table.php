@@ -10,8 +10,7 @@ return new class extends Migration {
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
+    public function up(): void {
         Schema::create('jobs', function (Blueprint $table): void {
             $table->id();
             $table->string('queue')->index();

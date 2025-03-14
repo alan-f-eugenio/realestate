@@ -13,8 +13,7 @@ use Illuminate\Validation\Rules\Password;
 use Inertia\Inertia;
 use Inertia\Response;
 
-final class PasswordController extends Controller
-{
+final class PasswordController extends Controller {
     /**
      * Show the user's password settings page.
      */
@@ -28,8 +27,7 @@ final class PasswordController extends Controller
     /**
      * Update the user's password.
      */
-    public function update(Request $request): RedirectResponse
-    {
+    public function update(Request $request): RedirectResponse {
         /** @var array<string, string> $validated */
         $validated = $request->validate([
             'current_password' => ['required', 'current_password'],

@@ -8,8 +8,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-final class DatabaseSeeder extends Seeder
-{
+final class DatabaseSeeder extends Seeder {
     /**
      * Seed the application's database.
      */

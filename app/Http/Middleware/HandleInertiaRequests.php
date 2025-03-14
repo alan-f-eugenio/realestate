@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
 use Inertia\Middleware;
 use Tighten\Ziggy\Ziggy;
 
-final class HandleInertiaRequests extends Middleware
-{
+final class HandleInertiaRequests extends Middleware {
     /**
      * The root template that's loaded on the first page visit.
      *
@@ -36,8 +34,7 @@ final class HandleInertiaRequests extends Middleware
      *
      * @return array<string, mixed>
      */
-    public function share(Request $request): array
-    {
+    public function share(Request $request): array {
         /** @var array<string, mixed> $data */
         $data = [
             ...parent::share($request),
