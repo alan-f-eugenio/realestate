@@ -13,13 +13,6 @@ import AppLayout from '@/layouts/app-layout';
 import { can } from '@/lib/utils';
 import { FormEventHandler, useState } from 'react';
 
-const breadcrumbs: BreadcrumbItem[] = [
-    {
-        title: 'Users',
-        href: '/users',
-    },
-];
-
 interface UserForm {
     name: string;
     email: string;
@@ -36,6 +29,17 @@ interface Role {
 type Roles = Role[];
 
 export default function Appearance({ item, roles }: { item: User; roles: Roles }) {
+    const breadcrumbs: BreadcrumbItem[] = [
+        {
+            title: 'Users',
+            href: '/users',
+        },
+        {
+            title: item.id ? 'Edit' : 'Create',
+            href: '/users/create',
+        },
+    ];
+
     const { auth } = usePage<SharedData>().props;
 
     const [changePassword, setChangePassword] = useState(!item.id);
@@ -58,12 +62,12 @@ export default function Appearance({ item, roles }: { item: User; roles: Roles }
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title={`Users - ${item.id ? 'Edit' : 'Create'}`} />
+            <Head title={`Users > ${item.id ? 'Edit' : 'Create'}`} />
 
             <div className="px-4 py-6">
                 <Heading title="Users" description={`${item.id ? 'Update' : 'Fill'} user informations`} />
 
-                <form onSubmit={formSubmit} className="grid grid-cols-3 gap-6">
+                <form onSubmit={formSubmit} className="grid md:grid-cols-3 gap-6">
                     <div className="grid gap-2">
                         <Label htmlFor="name">Name</Label>
 
