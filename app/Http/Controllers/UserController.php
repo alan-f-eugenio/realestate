@@ -31,7 +31,7 @@ final class UserController extends Controller {
     public function create(): InertiaResponse {
         return Inertia::render('admin/users/user-create-edit', [
             'item' => new User(),
-            'roles' => Role::query()->select('name')->get()
+            'roles' => Role::query()->select('name')->get(),
         ]);
     }
 
@@ -58,7 +58,7 @@ final class UserController extends Controller {
                 ...$user->toArray(),
                 'role' => $user->roles->first()->name ?? null,
             ],
-            'roles' => Role::query()->select('name')->get()
+            'roles' => Role::query()->select('name')->get(),
         ]);
     }
 
