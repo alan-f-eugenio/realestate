@@ -67,7 +67,7 @@ export default function Appearance({ item, roles }: { item: User; roles: Roles }
             <div className="px-4 py-6">
                 <Heading title="Users" description={`${item.id ? 'Update' : 'Fill'} user informations`} />
 
-                <form onSubmit={formSubmit} className="grid md:grid-cols-3 gap-6">
+                <form onSubmit={formSubmit} className="grid gap-6 md:grid-cols-3">
                     <div className="grid gap-2">
                         <Label htmlFor="name">Name</Label>
 
