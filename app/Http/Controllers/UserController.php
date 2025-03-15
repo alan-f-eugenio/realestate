@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response as InertiaResponse;
+use Spatie\Permission\Models\Role;
 
 final class UserController extends Controller {
     /**
@@ -30,6 +31,7 @@ final class UserController extends Controller {
     public function create(): InertiaResponse {
         return Inertia::render('admin/users/user-create-edit', [
             'item' => new User(),
+            'roles' => Role::query()->select('name')->get()
         ]);
     }
 
@@ -52,7 +54,11 @@ final class UserController extends Controller {
      */
     public function edit(User $user): InertiaResponse {
         return Inertia::render('admin/users/user-create-edit', [
-            'item' => $user,
+            'item' => [
+                ...$user->toArray(),
+                'role' => $user->roles->first()->name ?? null,
+            ],
+            'roles' => Role::query()->select('name')->get()
         ]);
     }
 
