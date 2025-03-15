@@ -11,9 +11,16 @@ export function can(permissions: string[] | null, check: string | string[]) {
     const hasPermission = (permission: string, check: string) => {
         const permissionParts = permission.split('.');
         const checkParts = check.split('.');
-        if (permissionParts.length !== checkParts.length) return false;
 
-        return permissionParts.every((part, index) => part === '*' || part === checkParts[index]);
+        for (let i = 0; i < permissionParts.length; i++) {
+            if (permissionParts[i] === '*') {
+                return true;
+            }
+            if (permissionParts[i] !== checkParts[i]) {
+                return false;
+            }
+        }
+        return permissionParts.length === checkParts.length;
     };
 
     if (Array.isArray(check)) {
