@@ -7,7 +7,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 use Inertia\Response as InertiaResponse;
@@ -62,9 +61,7 @@ final class UserController extends Controller {
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserRequest $request, User $user): void {
-
-    }
+    public function update(UserRequest $request, User $user): void {}
 
     /**
      * Remove the specified resource from storage.

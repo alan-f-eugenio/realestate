@@ -14,7 +14,7 @@ final class UserPolicy {
      */
     public function update(User $user, User $model): bool {
         if (
-            !$user->hasPermissionTo(PermissionsEnum::USERS_ASSIGN_ROLE_MASTER)
+            ! $user->hasPermissionTo(PermissionsEnum::USERS_ASSIGN_ROLE_MASTER)
             && $model->hasRole(RolesEnum::MASTER)
         ) {
             return false;

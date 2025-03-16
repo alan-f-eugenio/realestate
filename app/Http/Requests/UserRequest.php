@@ -29,7 +29,7 @@ final class UserRequest extends FormRequest {
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:254', Rule::unique('users', 'email')->ignore(auth()->user())],
             'role' => ['sometimes', Rule::enum(RolesEnum::class)],
-            'password' => ['sometimes', Password::defaults(), 'confirmed']
+            'password' => ['sometimes', Password::defaults(), 'confirmed'],
         ];
     }
 }
