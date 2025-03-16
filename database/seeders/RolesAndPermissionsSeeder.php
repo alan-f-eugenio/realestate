@@ -30,7 +30,6 @@ final class RolesAndPermissionsSeeder extends Seeder {
         $admin->givePermissionTo(PermissionsEnum::USERS_STORE->value);
         $admin->givePermissionTo(PermissionsEnum::USERS_EDIT->value);
         $admin->givePermissionTo(PermissionsEnum::USERS_UPDATE->value);
-        $admin->givePermissionTo(PermissionsEnum::USERS_DESTROY->value);
         $admin->givePermissionTo(PermissionsEnum::PROPERTIES_ALL->value);
         $admin->givePermissionTo(PermissionsEnum::SETTINGS_ALL->value);
 
