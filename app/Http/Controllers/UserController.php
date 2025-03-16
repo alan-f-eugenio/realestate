@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -39,7 +40,7 @@ final class UserController extends Controller {
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): void {
+    public function store(UserRequest $request): void {
         //
     }
 
@@ -61,8 +62,8 @@ final class UserController extends Controller {
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user): void {
-        //
+    public function update(UserRequest $request, User $user): void {
+
     }
 
     /**
