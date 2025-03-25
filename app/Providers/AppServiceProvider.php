@@ -24,8 +24,7 @@ final class AppServiceProvider extends ServiceProvider {
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
-    {
+    public function boot(): void {
         $this->configureCommands();
         $this->configureDates();
         $this->configureModels();
@@ -38,16 +37,14 @@ final class AppServiceProvider extends ServiceProvider {
      *
      * @see https://dyrynda.com.au/blog/laravel-immutable-dates
      */
-    private function configureDates(): void
-    {
+    private function configureDates(): void {
         Date::use(CarbonImmutable::class);
     }
 
     /**
      * Configure the application's commands.
      */
-    private function configureCommands(): void
-    {
+    private function configureCommands(): void {
         DB::prohibitDestructiveCommands(App::isProduction());
     }
 
@@ -57,8 +54,7 @@ final class AppServiceProvider extends ServiceProvider {
      *
      * @see https://laravel.com/docs/eloquent#configuring-eloquent-strictness
      */
-    private function configureModels(): void
-    {
+    private function configureModels(): void {
         Model::shouldBeStrict();
 
         Model::unguard();
@@ -70,8 +66,7 @@ final class AppServiceProvider extends ServiceProvider {
      *
      * @see https://laravel.com/docs/octane#serving-your-application-via-https
      */
-    private function configureUrl(): void
-    {
+    private function configureUrl(): void {
         URL::forceHttps(App::isProduction());
     }
 
@@ -79,8 +74,7 @@ final class AppServiceProvider extends ServiceProvider {
      * Configure the application's Vite loading strategy.
      * This is optional, but it's recommended to use aggressive prefetching so the UI feels snappy.
      */
-    private function configureVite(): void
-    {
+    private function configureVite(): void {
         Vite::useAggressivePrefetching();
     }
 }
