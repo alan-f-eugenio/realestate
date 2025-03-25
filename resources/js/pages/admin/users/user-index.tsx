@@ -34,7 +34,7 @@ export default function Appearance({ paginatedResponse }: { paginatedResponse: P
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Users - List" />
+            <Head title="Users > List" />
 
             <div className="px-4 py-6">
                 <Heading title="Users" description="List all users" />
