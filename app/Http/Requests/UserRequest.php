@@ -23,7 +23,7 @@ final class UserRequest extends FormRequest {
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array {
-        dd($this->all());
+        // dd($this->all());
 
         return [
             'name' => ['required', 'string', 'max:255'],
