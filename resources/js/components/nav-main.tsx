@@ -62,7 +62,11 @@ export function NavMain({ items = [] }: { items: NavItem[] }) {
                                     asChild
                                     onClick={(event) => handleSidebarAndCollapsible(event, item?.href ?? '', collapsibleState[item?.href ?? ''])}
                                 >
-                                    <SidebarMenuButton tooltip={item.title} isActive={page.url.includes(item?.href ?? '')} className="cursor-pointer">
+                                    <SidebarMenuButton
+                                        tooltip={{ children: item.title }}
+                                        isActive={page.url.includes(item?.href ?? '')}
+                                        className="cursor-pointer"
+                                    >
                                         {item.icon && <item.icon />}
                                         <span>{item.title}</span>
                                         <ChevronUp className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-180" />
@@ -87,7 +91,7 @@ export function NavMain({ items = [] }: { items: NavItem[] }) {
                     ) : (
                         <SidebarMenuItem key={item.title}>
                             <SidebarMenuButton
-                                tooltip={item.title}
+                                tooltip={{ children: item.title }}
                                 asChild
                                 isActive={item.href === page.url}
                                 onClick={(event) => handleSidebarAndCollapsible(event, item?.href ?? '', collapsibleState[item?.href ?? ''], false)}
