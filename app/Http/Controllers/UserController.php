@@ -59,11 +59,6 @@ final class UserController extends Controller {
     }
 
     /**
-     * Update the specified resource in storage.
-     */
-    public function update(UserRequest $request, User $user): void {}
-
-    /**
      * Remove the specified resource from storage.
      */
     public function destroy(User $user): RedirectResponse {
