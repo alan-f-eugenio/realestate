@@ -19,6 +19,7 @@ final class UserPolicy {
         ) {
             return false;
         }
+
         return $user->id !== $model->id;
     }
 
