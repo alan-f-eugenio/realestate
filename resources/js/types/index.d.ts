@@ -30,6 +30,7 @@ export interface SharedData {
     auth: Auth;
     ziggy: Config & { location: string };
     flash: { admin: Notification; public: Notification };
+    sidebarOpen: boolean;
     [key: string]: unknown;
 }
 

@@ -51,6 +51,7 @@ final class HandleInertiaRequests extends Middleware {
                 'admin' => fn () => $request->session()->get('admin-flash'),
                 'public' => fn () => $request->session()->get('public-flash'),
             ],
+            'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
         ];
 
         return $data;
